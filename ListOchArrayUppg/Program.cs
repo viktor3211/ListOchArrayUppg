@@ -118,10 +118,11 @@ namespace ListOchArrayUppg
 
         public static void Reverse(int[] numbers)
         {
-            numbers = new int[numbers.Length];
-
-            
-
+            for (int i = 0; i < numbers.Length / 2; i++)
+            {
+                Swap(i, numbers.Length - 1 - i, numbers);
+            }
+            return;
 
         }
 
