@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection.Metadata.Ecma335;
 
 namespace ListOchArrayUppg
@@ -55,6 +56,13 @@ namespace ListOchArrayUppg
             Reverse(reverseTestData);
             Console.WriteLine("Efter: " + string.Join(",", reverseTestData));
             Console.WriteLine();
+
+            // Rotate
+            string[] rotateTestData = { "a", "b", "c", "d", "e" };
+            Console.WriteLine("Demonstration av Rotate:");
+            Console.WriteLine("Före: " + string.Join(",", rotateTestData));
+            string[] rotateTestDataResult = Rotate(rotateTestData, 2);
+            Console.WriteLine("Efter: " + string.Join(",", rotateTestDataResult));
 
         }
 
@@ -125,7 +133,16 @@ namespace ListOchArrayUppg
             return;
 
         }
+        public static string[] Rotate(string[] strings, int n)
+        {
+            string[] result = new string[strings.Length];
+            for (int i = 0; i < strings.Length; i++)
+            {
+                result[(i + n) % strings.Length] = strings[i];
+            }
+            
 
-
+            return result;
+        }
     }
 }
