@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 
 namespace ListOchArrayUppg
 {
@@ -74,7 +75,13 @@ namespace ListOchArrayUppg
             Console.WriteLine("Resultat: " + string.Join(",", intersectionResult));
             Console.WriteLine();
 
-
+            // Unique
+            string[] uniqueTestData = { "a", "b", "c", "d", "a", "a", "c" };
+            Console.WriteLine("Demonstration av Unique:");
+            Console.WriteLine("Testdata: " + string.Join(",", uniqueTestData));
+            List<string> uniqueResult = Unique(uniqueTestData);
+            Console.WriteLine("Resultat: " + string.Join(",", uniqueResult));
+            Console.WriteLine();
         }
 
         public static int Summan(int[] listOfNumbers)
@@ -166,8 +173,29 @@ namespace ListOchArrayUppg
                 }
             }
             return result;
+        }
 
+        public static List<string> Unique(string[] strings)
+        {
+            List<string> result = new List<string>();
 
+            foreach (string s1 in strings)
+            {
+                int count = 0;
+                foreach (string s2 in strings)
+                {
+                    if(s1 == s2)
+                    {
+                        count++;
+                    }
+
+                    if(count == 1)
+                    {
+                        result.Add(s1);
+                    }
+                }
+            }   
+            return result;
         }
     }
 }
